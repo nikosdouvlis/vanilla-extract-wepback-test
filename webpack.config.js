@@ -23,7 +23,7 @@ module.exports = (env) => {
       definePlugin,
       analyzerPlugin,
       new VanillaExtractPlugin({
-        outputCss: true,
+        identifiers: "short",
       }),
       new HtmlWebpackPlugin(),
     ].filter((s) => !!s),

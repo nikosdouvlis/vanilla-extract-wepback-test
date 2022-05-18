@@ -1,5 +1,6 @@
 import { style, keyframes, globalKeyframes } from "@vanilla-extract/css";
 import { lighten, animation } from "polished";
+import { sprinkles } from "./springles.css";
 
 const rotate = keyframes({
   "0%": { transform: "rotate(0deg)" },
@@ -20,4 +21,10 @@ export const className = style({
 export const className2 = style({
   display: "flex",
   backgroundColor: "antiquewhite",
+});
+
+export const typedClass = sprinkles({
+  display: "flex",
+  background: "blue-200",
+  color: "blue-50",
 });
