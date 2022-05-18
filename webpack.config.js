@@ -4,6 +4,8 @@ const packageJSON = require("./package.json");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const { VanillaExtractPlugin } = require("@vanilla-extract/webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const autoPrefixer = require("autoprefixer");
+const cssnano = require("cssnano");
 
 module.exports = (env) => {
   const showAnalyzer = !!env.analyzer;
@@ -51,13 +53,27 @@ module.exports = (env) => {
                 },
               },
             },
-            "css-loader",
           ],
         },
         {
           test: /\.css$/i,
           exclude: /(\.vanilla\.css$|node_modules)/i,
-          use: ["style-loader", "css-loader"],
+          use: ["style-loader"],
+        },
+        {
+          test: /\.css$/i,
+          exclude: /node_modules/i,
+          use: [
+            "css-loader",
+            {
+              loader: "postcss-loader",
+              options: {
+                postcssOptions: {
+                  plugins: [autoPrefixer, cssnano({ preset: "default" })],
+                },
+              },
+            },
+          ],
         },
         {
           test: /\.(ts|js)x?$/,

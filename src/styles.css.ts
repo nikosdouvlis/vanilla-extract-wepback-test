@@ -8,7 +8,11 @@ const rotate = keyframes({
 
 export const className = style({
   display: "flex",
-  color: lighten(0.2, "#0b18dc"),
+  color: lighten(0.1, "#0b18dc"),
+  paddingTop: 1,
+  paddingBottom: 2,
+  paddingLeft: 3,
+  paddingRight: 4,
   backgroundColor: "gainsboro",
   ...animation([rotate, "1s", "ease-in-out"], ["colorchange", "2s"]),
 });
